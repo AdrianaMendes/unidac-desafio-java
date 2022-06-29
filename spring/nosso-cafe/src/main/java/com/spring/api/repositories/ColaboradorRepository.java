@@ -16,10 +16,13 @@ import com.spring.api.entities.ColaboradorEntity;
 public interface ColaboradorRepository extends JpaRepository<ColaboradorEntity, Long> {
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO colaborador (nome, cpf) VALUES (:nome, :cpf);", nativeQuery = true)
+	@Query(value = "INSERT INTO colaborador (nome, cpf) VALUES (:nome, :cpf)", nativeQuery = true)
 	public void saveNativeQuery(@Param("nome") final String nome, @Param("cpf") final String cpf);
 	
 	@Query(value = "SELECT * FROM colaborador;", nativeQuery = true)
 	public List<ColaboradorEntity> findAllNativeQuery();
+	
+	@Query(value = "SELECT * FROM colaborador c WHERE c.cpf = :cpf", nativeQuery = true)
+	public List<ColaboradorEntity> findByCpfNativeQuery(@Param("cpf") final String cpf);
 }
 
