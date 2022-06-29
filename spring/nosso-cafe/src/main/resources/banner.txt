@@ -1,0 +1,12 @@
+  _   _                                  _____            __     __ 
+ | \ | |                                / ____|          / _|   /_/ 
+ |  \| |   ___    ___   ___    ___     | |        __ _  | |_    ___ 
+ | . ` |  / _ \  / __| / __|  / _ \    | |       / _` | |  _|  / _ \
+ | |\  | | (_) | \__ \ \__ \ | (_) |   | |____  | (_| | | |   |  __/
+ |_| \_|  \___/  |___/ |___/  \___/     \_____|  \__,_| |_|    \___|
+                                                                    
+                                                                    
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version}
+Developed by ${application.author}
+Licensed under ${application.license}
