@@ -23,18 +23,18 @@ import io.swagger.annotations.Api;
 @RequestMapping("mantimento")
 @Api(tags = "Mantimentos")
 public class MantimentoController {
-	
+
 	@Autowired
 	private MantimentoService service;
-	
-	@PostMapping
+
+	@GetMapping(path = "findAll")
+	public ResponseEntity<List<MantimentoResponseDto>> findAll() {
+		return new ResponseEntity<>(this.service.findAll(), HttpStatus.OK);
+	}
+
+	@PostMapping(path = "save")
 	public ResponseEntity<Void> save(@Valid @RequestBody final MantimentoRequestDto request) {
 		this.service.save(request);
 		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
-	
-	@GetMapping
-	public ResponseEntity<List<MantimentoResponseDto>> findAll() {
-		return new ResponseEntity<>(this.service.findAll(), HttpStatus.OK);
 	}
 }

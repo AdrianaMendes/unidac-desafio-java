@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MantimentoResponseDto {
-	private Long id;
-	private String descricao;
-	
 	public static List<MantimentoResponseDto> toListDto(final List<MantimentoEntity> listEntity) {
 		return listEntity.stream().map(x -> new MantimentoResponseDto(x.getId(), x.getDescricao())).toList();
 	}
+
+	private Long id;
+
+	private String descricao;
 }

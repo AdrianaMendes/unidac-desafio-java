@@ -14,12 +14,12 @@ public class MantimentoService {
 
 	@Autowired
 	private MantimentoRepository repository;
-	
-	public void save(final MantimentoRequestDto request) {
-		repository.saveNativeQuery(request.getDescricao());
-	}
-	
+
 	public List<MantimentoResponseDto> findAll() {
 		return MantimentoResponseDto.toListDto(repository.findAllNativeQuery());
+	}
+
+	public void save(final MantimentoRequestDto request) {
+		repository.saveNativeQuery(request.getDescricao());
 	}
 }

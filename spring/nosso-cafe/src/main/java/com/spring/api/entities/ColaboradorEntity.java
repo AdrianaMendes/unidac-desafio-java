@@ -29,16 +29,16 @@ public final class ColaboradorEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 64)
 	@NotBlank(message = "Campo nome obrigatório.")
 	private String nome;
-	
+
 	@Column(nullable = false, length = 11, unique = true)
 	@NotBlank(message = "Campo CPF obrigatório.")
 	@CPF(message = "CPF inválido.")
 	private String cpf;
-	
+
 	@OneToMany(mappedBy = "colaborador")
-	private List<MantimentoEntity> listaMantimentos; 
+	private List<MantimentoEntity> listaMantimentos;
 }

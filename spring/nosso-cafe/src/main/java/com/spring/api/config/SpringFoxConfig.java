@@ -19,17 +19,13 @@ public class SpringFoxConfig {
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.spring.api.controllers")).paths(PathSelectors.any())
-				.build().apiInfo(apiInfo());
+		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.spring.api.controllers"))
+				.paths(PathSelectors.any()).build().apiInfo(apiInfo());
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Nosso Café",
-				"Aplicação backend de teste em java spring, usando: Lombok, servidor H2 e documentação Swagger.",
-				"1.0.0v", null,
-				new Contact("Adrina Mirian Mendes Cardoso", "https://github.com/AdrianaMendes",
-						"adrianamirianmc@gmail.com"),
-				"MIT", "https://opensource.org/licenses/MIT", Collections.emptyList());
+		return new ApiInfo("Nosso Café", "Aplicação backend de teste em java spring, usando: Lombok, servidor H2 e documentação Swagger.", "1.0.0v", null,
+				new Contact("Adrina Mirian Mendes Cardoso", "https://github.com/AdrianaMendes", "adrianamirianmc@gmail.com"), "MIT",
+				"https://opensource.org/licenses/MIT", Collections.emptyList());
 	}
 }

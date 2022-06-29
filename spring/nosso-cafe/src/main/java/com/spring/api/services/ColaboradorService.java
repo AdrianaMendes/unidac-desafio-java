@@ -16,16 +16,20 @@ public class ColaboradorService {
 
 	@Autowired
 	private ColaboradorRepository repository;
-	
+
+	public void addMantimento(final Long colaboradorId, final Long mantimentoId) {
+		repository.addMantimentoNativeQuery(colaboradorId, mantimentoId);
+	}
+
+	public List<ColaboradorResponseDto> findAll() {
+		return ColaboradorResponseDto.toListDto(repository.findAllNativeQuery());
+	}
+
 	public void save(final ColaboradorRequestDto request) {
-		if(this.repository.findByCpfNativeQuery(request.getCpfNumber()).size() != 0) {
+		if (this.repository.findByCpfNativeQuery(request.getCpfNumber()).size() != 0) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "CPF registrado.");
 		}
 		repository.saveNativeQuery(request.getNome(), request.getCpfNumber());
 	}
-	
-	public List<ColaboradorResponseDto> findAll() {
-		return ColaboradorResponseDto.toListDto(repository.findAllNativeQuery());
-	}
-	
+
 }

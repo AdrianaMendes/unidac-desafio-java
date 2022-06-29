@@ -14,12 +14,11 @@ import com.spring.api.entities.MantimentoEntity;
 
 @Repository
 public interface MantimentoRepository extends JpaRepository<MantimentoEntity, Long> {
+	@Query(value = "SELECT * FROM mantimento", nativeQuery = true)
+	List<MantimentoEntity> findAllNativeQuery();
+
 	@Modifying
 	@Transactional
 	@Query(value = "INSERT INTO mantimento (descricao) VALUES (:descricao)", nativeQuery = true)
 	void saveNativeQuery(@Param("descricao") final String descricao);
-	
-	@Query(value = "SELECT * FROM mantimento", nativeQuery = true)
-	List<MantimentoEntity> findAllNativeQuery();
 }
-
