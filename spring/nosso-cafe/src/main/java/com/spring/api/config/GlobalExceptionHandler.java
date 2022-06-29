@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
 	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
 		Map<String, String> errors = new HashMap<>();
 		ex.getBindingResult().getAllErrors().forEach((error) -> {
-			String fieldName = ((FieldError) error).getField();
-			String errorMessage = error.getDefaultMessage();
+			final String fieldName = ((FieldError) error).getField();
+			final String errorMessage = error.getDefaultMessage();
 			errors.put(fieldName, errorMessage);
 		});
 		return errors;
@@ -30,5 +30,12 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ErrorResponse> handleValidationExceptions(ResponseStatusException ex) {
 		final ErrorResponse error = new ErrorResponse(ex.getReason());
 		return new ResponseEntity<>(error, ex.getStatus());
+	}
+	
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponse> handleValidationExceptions(Exception ex) {
+		final ErrorResponse error = new ErrorResponse(ex.getMessage());
+		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

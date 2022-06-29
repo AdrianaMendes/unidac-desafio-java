@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,15 +18,20 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "mantimento")
-public class MantimentoEntity implements Serializable {
-	
+@Entity
+@Table(name = "mantimento")
+public final class MantimentoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column
-	private String nome;
+
+	@Column(nullable = false, length = 64)
+	private String descricao;
+
+	@ManyToOne
+	@JoinColumn(name = "colaborador_id")
+	private ColaboradorEntity colaborador;
 }

@@ -18,13 +18,10 @@ public class ColaboradorService {
 	private ColaboradorRepository repository;
 	
 	public void save(final ColaboradorRequestDto request) {
-		
-		if(this.repository.findByCpfNativeQuery(request.getCpf()).size() != 0) {
+		if(this.repository.findByCpfNativeQuery(request.getCpfNumber()).size() != 0) {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "CPF registrado.");
 		}
-		
-		
-		repository.saveNativeQuery(request.getNome(), request.getCpf());
+		repository.saveNativeQuery(request.getNome(), request.getCpfNumber());
 	}
 	
 	public List<ColaboradorResponseDto> findAll() {

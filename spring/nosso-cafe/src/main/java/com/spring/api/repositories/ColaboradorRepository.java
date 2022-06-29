@@ -17,12 +17,12 @@ public interface ColaboradorRepository extends JpaRepository<ColaboradorEntity, 
 	@Modifying
 	@Transactional
 	@Query(value = "INSERT INTO colaborador (nome, cpf) VALUES (:nome, :cpf)", nativeQuery = true)
-	public void saveNativeQuery(@Param("nome") final String nome, @Param("cpf") final String cpf);
+	void saveNativeQuery(@Param("nome") final String nome, @Param("cpf") final String cpf);
 	
-	@Query(value = "SELECT * FROM colaborador;", nativeQuery = true)
-	public List<ColaboradorEntity> findAllNativeQuery();
+	@Query(value = "SELECT * FROM colaborador", nativeQuery = true)
+	List<ColaboradorEntity> findAllNativeQuery();
 	
 	@Query(value = "SELECT * FROM colaborador c WHERE c.cpf = :cpf", nativeQuery = true)
-	public List<ColaboradorEntity> findByCpfNativeQuery(@Param("cpf") final String cpf);
+	List<ColaboradorEntity> findByCpfNativeQuery(@Param("cpf") final String cpf);
 }
 
