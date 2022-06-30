@@ -7,11 +7,11 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +25,6 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("mantimento")
 @Api(tags = "Mantimentos")
-@CrossOrigin(origins = "http://localhost:4200")
 public class MantimentoController {
 
 	@Autowired
@@ -40,6 +39,12 @@ public class MantimentoController {
 	@GetMapping(path = "findAll")
 	public ResponseEntity<List<MantimentoResponseDto>> findAll() {
 		return new ResponseEntity<>(this.service.findAll(), HttpStatus.OK);
+	}
+	
+	@PutMapping(path = "update")
+	public ResponseEntity<Void> update(@Valid @RequestBody final MantimentoRequestDto request) {
+		this.service.update(request);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@PostMapping(path = "save")

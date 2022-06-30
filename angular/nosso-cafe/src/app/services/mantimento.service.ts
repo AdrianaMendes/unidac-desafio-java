@@ -20,6 +20,10 @@ export class MantimentoService {
 		return this.httpClient.get<IMantimento[]>(`${this.url}/findAll`);
 	}
 
+	update(request: IMantimento): Observable<void> {
+		return this.httpClient.put<void>(`${this.url}/update`, request);
+	}
+
 	save(request: IMantimento): Observable<void> {
 		return this.httpClient.post<void>(`${this.url}/save`, request);
 	}

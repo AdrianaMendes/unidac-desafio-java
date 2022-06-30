@@ -8,6 +8,9 @@ import lombok.Data;
 
 @Data
 public class MantimentoRequestDto {
+	
+	private Long id;
+	
 	@Size(max = 64)
 	@NotBlank(message = "Campo descrição obrigatório.")
 	@ApiModelProperty(value = "Descrição do item", example = "Pão de forma")

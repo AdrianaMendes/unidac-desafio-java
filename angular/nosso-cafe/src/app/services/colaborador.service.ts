@@ -24,6 +24,10 @@ export class ColaboradorService {
 		return this.httpClient.get<IColaborador[]>(`${this.url}/findAll`);
 	}
 
+	update(request: IColaborador): Observable<void> {
+		return this.httpClient.put<void>(`${this.url}/update`, request);
+	}
+
 	save(request: IColaborador): Observable<void> {
 		return this.httpClient.post<void>(`${this.url}/save`, request);
 	}

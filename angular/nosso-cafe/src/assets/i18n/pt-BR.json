@@ -16,6 +16,12 @@
     "view": "Visualizar",
     "edit": "Editar",
     "cancel": "Cancelar",
-    "save": "Salvar"
+    "save": "Salvar",
+    "mandatory-field": "Campo obrigatório",
+    "portuguese": "Português",
+    "english": "Inglês",
+    "language": "Idioma",
+    "groceries": "Mantimento",
+    "description": "Descrição"
   }
 }

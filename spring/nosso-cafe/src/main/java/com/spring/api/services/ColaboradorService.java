@@ -58,6 +58,10 @@ public class ColaboradorService {
 	public List<ColaboradorResponseDto> findAll() {
 		return ColaboradorResponseDto.toListDto(repository.findAllNativeQuery());
 	}
+	
+	public void update(final ColaboradorRequestDto request) {
+		this.repository.updateNativeQuery(request.getId(), request.getNome());
+	}
 
 	public void save(final ColaboradorRequestDto request) {
 		if (this.repository.findByCpfNativeQuery(request.getCpfNumber()) != null) {

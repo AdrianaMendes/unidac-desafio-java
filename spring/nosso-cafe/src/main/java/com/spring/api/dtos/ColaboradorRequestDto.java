@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class ColaboradorRequestDto {
 
+	private Long id;
+	
 	@ApiModelProperty(value = "Nome do colaborador", example = "Machado de Assis")
 	@NotBlank(message = "Campo nome obrigatório.")
 	@Size(message = "Limite máximo de 64 caracteres.", max = 64)

@@ -1,4 +1,4 @@
-<app-modal [title]="'text.collaborator' | translate" [isValid]="!form.valid" (eventEmitterSubmit)="onSubmit()">
+<app-modal [title]="'text.groceries' | translate" [isValid]="!form.valid" (eventEmitterSubmit)="onSubmit()">
 	<ng-container form>
 		<form [formGroup]="form" fxLayout="column" fxLayoutAlign="space-evenly stretch">
 			<div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="1%">
@@ -9,15 +9,8 @@
 			</div>
 			<div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="1%">
 				<mat-form-field fxFlex appearance="fill">
-					<mat-label>{{ 'text.name' | translate }}</mat-label>
-					<input matInput type="text" formControlName="nome" name="nome" required [readonly]="isReadonly" />
-					<mat-error>
-						{{ 'text.mandatory-field' | translate }}
-					</mat-error>
-				</mat-form-field>
-				<mat-form-field fxFlex appearance="fill">
-					<mat-label>{{ 'text.cpf' | translate }}</mat-label>
-					<input matInput type="text" formControlName="cpf" name="cpf" required [readonly]="isReadonly" [mask]="'000.000.000-00'" />
+					<mat-label>{{ 'text.description' | translate }}</mat-label>
+					<input matInput type="text" formControlName="descricao" name="descricao" required [readonly]="isReadonly" />
 					<mat-error>
 						{{ 'text.mandatory-field' | translate }}
 					</mat-error>

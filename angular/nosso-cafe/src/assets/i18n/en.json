@@ -15,6 +15,12 @@
     "delete": "Delete",
     "edit": "Edit",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "mandatory-field": "Mandatory field",
+    "portuguese": "Portuguese",
+    "english": "English",
+    "language": "Language",
+    "groceries": "Groceries",
+    "description": "Description"
   }
 }

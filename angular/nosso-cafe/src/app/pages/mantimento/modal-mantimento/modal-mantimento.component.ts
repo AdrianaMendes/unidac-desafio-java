@@ -3,19 +3,19 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TModal } from '@custom-types/modal.type';
-import { IColaboradorFormGroup } from '@interfaces/colaborador.interface';
-import { ColaboradorService } from '@services/colaborador.service';
+import { IMantimentoFormGroup } from '@interfaces/mantimento.interface';
+import { MantimentoService } from '@services/mantimento.service';
 
 @Component({
-	templateUrl: './modal-colaborador.component.html',
+	templateUrl: './modal-mantimento.component.html',
 })
-export class ModalColaboradorComponent {
+export class ModalMantimentoComponent {
 	modalType!: TModal;
-	form!: IColaboradorFormGroup;
+	form!: IMantimentoFormGroup;
 	isReadonly!: boolean;
 
 	constructor(
-		private readonly service: ColaboradorService,
+		private readonly service: MantimentoService,
 		private readonly formBuilder: FormBuilder,
 		private readonly dialogRef: MatDialogRef<any>,
 		@Inject(MAT_DIALOG_DATA) private readonly data: any,
@@ -27,17 +27,15 @@ export class ModalColaboradorComponent {
 			case 'add':
 				this.form = this.formBuilder.group({
 					id: [undefined],
-					nome: [undefined, Validators.required],
-					cpf: [undefined, Validators.required],
-				}) as unknown as IColaboradorFormGroup;
+					descricao: [undefined, Validators.required],
+				}) as unknown as IMantimentoFormGroup;
 				break;
 			case 'edit':
 			case 'view':
 				this.form = this.formBuilder.group({
 					id: [this.data.form.id],
-					nome: [this.data.form.nome, Validators.required],
-					cpf: [this.data.form.cpf],
-				}) as unknown as IColaboradorFormGroup;
+					descricao: [this.data.form.descricao, Validators.required],
+				}) as unknown as IMantimentoFormGroup;
 				break;
 		}
 	}

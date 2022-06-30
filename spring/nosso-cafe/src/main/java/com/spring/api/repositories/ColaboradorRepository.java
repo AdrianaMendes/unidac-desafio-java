@@ -39,6 +39,11 @@ public interface ColaboradorRepository extends JpaRepository<ColaboradorEntity, 
 	
 	@Modifying
 	@Transactional
+	@Query(value = "UPDATE colaborador c SET c.nome = :nome WHERE c.id = :id", nativeQuery = true)
+	void updateNativeQuery(final Long id, final String nome);
+	
+	@Modifying
+	@Transactional
 	@Query(value = "INSERT INTO colaborador (nome, cpf) VALUES (:nome, :cpf)", nativeQuery = true)
 	void saveNativeQuery(final String nome, final String cpf);
 }

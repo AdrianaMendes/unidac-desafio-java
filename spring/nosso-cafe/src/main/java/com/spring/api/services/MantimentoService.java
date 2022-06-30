@@ -22,6 +22,10 @@ public class MantimentoService {
 	public List<MantimentoResponseDto> findAll() {
 		return MantimentoResponseDto.toListDto(repository.findAllNativeQuery());
 	}
+	
+	public void update(final MantimentoRequestDto request) {
+		this.repository.updateNativeQuery(request.getId(), request.getDescricao());
+	}
 
 	public void save(final MantimentoRequestDto request) {
 		repository.saveNativeQuery(request.getDescricao());

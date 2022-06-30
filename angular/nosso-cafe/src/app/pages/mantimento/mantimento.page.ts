@@ -5,21 +5,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TModal } from '@custom-types/modal.type';
-import { IColaborador } from '@interfaces/colaborador.interface';
-import { ColaboradorService } from '@services/colaborador.service';
-import { ModalColaboradorComponent } from './modal-colaborador/modal-colaborador.component';
+import { IMantimento } from '@interfaces/mantimento.interface';
+import { MantimentoService } from '@services/mantimento.service';
+import { ModalMantimentoComponent } from './modal-mantimento/modal-mantimento.component';
 
 @Component({
-	templateUrl: './colaborador.page.html',
+	templateUrl: './mantimento.page.html',
 })
-export class ColaboradorPage implements AfterViewInit {
-	readonly displayedColumns: string[] = ['id', 'nome', 'cpf', 'listaMantimentos', 'action'];
+export class MantimentoPage implements AfterViewInit {
+	readonly displayedColumns: string[] = ['id', 'descricao', 'action'];
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
-	dataSource: MatTableDataSource<IColaborador> = new MatTableDataSource();
+	dataSource: MatTableDataSource<IMantimento> = new MatTableDataSource();
 
-	constructor(private readonly service: ColaboradorService, private readonly matDialog: MatDialog) {}
+	constructor(private readonly service: MantimentoService, private readonly matDialog: MatDialog) {}
 
 	private refresh(): void {
 		this.service.findAll().subscribe((response) => {
@@ -45,7 +45,7 @@ export class ColaboradorPage implements AfterViewInit {
 	openModal(modalType: TModal, id?: number): void {
 		const form = this.dataSource.data.find((x) => x.id === id);
 		this.matDialog
-			.open(ModalColaboradorComponent, { width: '50%', data: { modalType: modalType, form: form } })
+			.open(ModalMantimentoComponent, { width: '50%', data: { modalType: modalType, form: form } })
 			.afterClosed()
 			.subscribe(() => {
 				this.refresh();

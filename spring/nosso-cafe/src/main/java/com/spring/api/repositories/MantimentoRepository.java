@@ -26,6 +26,11 @@ public interface MantimentoRepository extends JpaRepository<MantimentoEntity, Lo
 
 	@Modifying
 	@Transactional
+	@Query(value = "UPDATE mantimento m SET m.descricao = :descricao WHERE m.id = :id", nativeQuery = true)
+	void updateNativeQuery(final Long id, final String descricao);
+	
+	@Modifying
+	@Transactional
 	@Query(value = "INSERT INTO mantimento (descricao) VALUES (:descricao)", nativeQuery = true)
 	void saveNativeQuery(final String descricao);
 }

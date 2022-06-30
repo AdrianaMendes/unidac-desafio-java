@@ -41,6 +41,11 @@ export class AppComponent implements OnDestroy, OnInit {
 				routerLink: '/colaborador',
 			},
 			{
+				text: await firstValueFrom(this.translateService.get('text.groceries')),
+				icon: 'coffee',
+				routerLink: '/mantimento',
+			},
+			{
 				text: await firstValueFrom(this.translateService.get('text.setting')),
 				icon: 'settings',
 				routerLink: '/setting',

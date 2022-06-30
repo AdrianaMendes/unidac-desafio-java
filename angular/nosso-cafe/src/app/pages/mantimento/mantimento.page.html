@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="none">
-	<h1>{{ 'text.collaborator' | translate }}</h1>
+	<h1>{{ 'text.groceries' | translate }}</h1>
 	<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%">
 		<mat-form-field appearance="fill">
 			<mat-label>{{ 'text.filter' | translate }}</mat-label>
@@ -12,17 +12,9 @@
 			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.id' | translate }}</mat-header-cell>
 			<mat-cell *matCellDef="let row">{{ row['id'] }}</mat-cell>
 		</ng-container>
-		<ng-container matColumnDef="nome">
-			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.nome' | translate }}</mat-header-cell>
-			<mat-cell *matCellDef="let row">{{ row['nome'] }}</mat-cell>
-		</ng-container>
-		<ng-container matColumnDef="cpf">
-			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.cpf' | translate }}</mat-header-cell>
-			<mat-cell *matCellDef="let row">{{ row['cpf'] | mask: '000.000.000-00' }}</mat-cell>
-		</ng-container>
-		<ng-container matColumnDef="listaMantimentos">
-			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.groceries' | translate }}</mat-header-cell>
-			<mat-cell *matCellDef="let row">{{ row['listaMantimentos'] }}</mat-cell>
+		<ng-container matColumnDef="descricao">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.description' | translate }}</mat-header-cell>
+			<mat-cell *matCellDef="let row">{{ row['descricao'] }}</mat-cell>
 		</ng-container>
 		<ng-container matColumnDef="action">
 			<mat-header-cell *matHeaderCellDef>{{ 'text.action' | translate }}</mat-header-cell>
