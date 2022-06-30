@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutAlign="none">
+	<h1>{{ 'text.collaborator' | translate }}</h1>
+	<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1%">
+		<mat-form-field appearance="fill">
+			<mat-label>{{ 'text.filter' | translate }}</mat-label>
+			<input matInput (keyup)="applyFilter($event)" #input />
+		</mat-form-field>
+		<button mat-raised-button color="primary" (click)="openModal('add')">{{ 'text.add' | translate }}</button>
+	</div>
+	<mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+		<ng-container *ngFor="let c of displayedColumns">
+			<ng-container *ngIf="c !== 'action'" [matColumnDef]="c">
+				<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.' + c | translate }}</mat-header-cell>
+				<mat-cell *matCellDef="let row">{{ row[c] }}</mat-cell>
+			</ng-container>
+		</ng-container>
+		<ng-container matColumnDef="action">
+			<mat-header-cell *matHeaderCellDef>{{ 'text.action' | translate }}</mat-header-cell>
+			<mat-cell *matCellDef="let row">
+				<button mat-icon-button (click)="openModal('edit', row.id)" [matTooltip]="'text.edit' | translate">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button  mat-icon-button (click)="openModal('view', row.id)" [matTooltip]="'text.view' | translate">
+					<mat-icon>visibility</mat-icon>
+				</button>
+				<button  mat-icon-button (click)="onDelete(row.id)" [matTooltip]="'text.delete' | translate" color="warn">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</mat-cell>
+		</ng-container>
+		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+		<mat-row *matRowDef="let row; columns: displayedColumns" [ngClass]="row.isEnable ? '' : 'disable-row'"></mat-row>
+	</mat-table>
+	<mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons> </mat-paginator>
+</div>

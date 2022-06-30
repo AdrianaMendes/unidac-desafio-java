@@ -1,0 +1,21 @@
+{
+  "text": {
+    "home": "Início",
+    "collaborator": "Colaborador",
+    "setting": "Configuração",
+    "welcome": "Bem vindo",
+    "name": "Nome",
+    "nome": "Nome",
+    "cpf": "CPF",
+    "app-name": "Nosso Café",
+    "id": "ID",
+    "filter": "Filtro",
+    "add": "Adicionar",
+    "action": "Ação",
+    "delete": "Deletar",
+    "view": "Visualizar",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "save": "Salvar"
+  }
+}

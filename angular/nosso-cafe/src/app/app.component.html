@@ -1,0 +1,20 @@
+<div class="main-container" [class.is-mobile]="mobileQuery.matches">
+	<mat-toolbar color="primary">
+		<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+		<h1 class="app-name">{{ 'text.app-name' | translate }}</h1>
+	</mat-toolbar>
+	<mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0" autosize="true">
+		<mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened="true">
+			<mat-nav-list>
+				<ng-container *ngFor="let menu of menuList">
+					<mat-list-item [routerLink]="menu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+						<mat-icon>{{ menu.icon }}</mat-icon> {{ menu.text }}
+					</mat-list-item>
+				</ng-container>
+			</mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content>
+			<router-outlet></router-outlet>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>

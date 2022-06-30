@@ -1,0 +1,20 @@
+{
+  "text": {
+    "home": "Home",
+    "collaborator": "Collaborator",
+    "setting": "Setting",
+    "welcome": "Welcome",
+    "name": "Name",
+    "nome": "Name",
+    "cpf": "CPF",
+    "app-name": "Our Coffee",
+    "id": "ID",
+    "filter": "Filter",
+    "add": "Add",
+    "action": "Action",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

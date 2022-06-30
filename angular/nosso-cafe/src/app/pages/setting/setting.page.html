@@ -1,0 +1,10 @@
+<div fxLayout="column" fxLayoutAlign="none">
+	<h1>{{ 'page-title.setting' | translate }}</h1>
+	<mat-form-field appearance="fill">
+		<mat-label>{{ 'text.language' | translate }}</mat-label>
+		<mat-select [(ngModel)]="language" (selectionChange)="onChangeLanguage()">
+			<mat-option value="pt-BR">{{ 'text.portuguese' | translate }}</mat-option>
+			<mat-option value="en">{{ 'text.english' | translate }}</mat-option>
+		</mat-select>
+	</mat-form-field>
+</div>
