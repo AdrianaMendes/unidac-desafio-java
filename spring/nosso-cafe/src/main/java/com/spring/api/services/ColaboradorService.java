@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.spring.api.dtos.ColaboradorRequestDto;
 import com.spring.api.dtos.ColaboradorResponseDto;
+import com.spring.api.dtos.MantimentoRequestDto;
 import com.spring.api.entities.ColaboradorEntity;
 import com.spring.api.entities.MantimentoEntity;
 import com.spring.api.repositories.ColaboradorRepository;
@@ -61,6 +62,21 @@ public class ColaboradorService {
 	
 	public void update(final ColaboradorRequestDto request) {
 		this.repository.updateNativeQuery(request.getId(), request.getNome());
+		
+		if(request.getListaMantimentos() != null && request.getListaMantimentos().size() > 0) {
+			for(MantimentoRequestDto m : request.getListaMantimentos()) {				
+				final MantimentoEntity mantimento = this.mantimentoRepository.findByIdNativeQuery(m.getId());
+				
+				if(mantimento.getColaborador() != null && mantimento.getColaborador().getId() != request.getId()) {
+					throw new ResponseStatusException(HttpStatus.CONFLICT,
+							"Colaborador " + mantimento.getColaborador().getNome() + " já está levando " + mantimento.getDescricao() + ".");
+				}
+			}
+			
+			for(MantimentoRequestDto m : request.getListaMantimentos()) {				
+				this.repository.addMantimentoNativeQuery(request.getId(), m.getId());
+			}
+		}
 	}
 
 	public void save(final ColaboradorRequestDto request) {
@@ -68,5 +84,22 @@ public class ColaboradorService {
 			throw new ResponseStatusException(HttpStatus.CONFLICT, "CPF registrado.");
 		}
 		this.repository.saveNativeQuery(request.getNome(), request.getCpfNumber());
+		
+		final Long colaboradorId = this.repository.findByCpfNativeQuery(request.getCpf()).getId();
+		
+		if(request.getListaMantimentos() != null && request.getListaMantimentos().size() > 0) {
+			for(MantimentoRequestDto m : request.getListaMantimentos()) {				
+				final MantimentoEntity mantimento = this.mantimentoRepository.findByIdNativeQuery(m.getId());
+				
+				if(mantimento.getColaborador() != null && mantimento.getColaborador().getId() != request.getId()) {
+					throw new ResponseStatusException(HttpStatus.CONFLICT,
+							"Colaborador " + mantimento.getColaborador().getNome() + " já está levando " + mantimento.getDescricao() + ".");
+				}
+			}
+			
+			for(MantimentoRequestDto m : request.getListaMantimentos()) {				
+				this.repository.addMantimentoNativeQuery(colaboradorId, m.getId());
+			}
+		}
 	}
 }

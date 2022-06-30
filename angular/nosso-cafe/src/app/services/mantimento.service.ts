@@ -20,6 +20,10 @@ export class MantimentoService {
 		return this.httpClient.get<IMantimento[]>(`${this.url}/findAll`);
 	}
 
+	findAllAvailable(): Observable<IMantimento[]> {
+		return this.httpClient.get<IMantimento[]>(`${this.url}/findAllAvailable`);
+	}
+
 	update(request: IMantimento): Observable<void> {
 		return this.httpClient.put<void>(`${this.url}/update`, request);
 	}

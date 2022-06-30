@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TModal } from '@custom-types/modal.type';
 import { IMantimentoFormGroup } from '@interfaces/mantimento.interface';
 import { MantimentoService } from '@services/mantimento.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	templateUrl: './modal-mantimento.component.html',
@@ -45,6 +46,14 @@ export class ModalMantimentoComponent {
 			case 'add':
 				this.service.save(this.form.value).subscribe({
 					next: () => {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							title: 'Salvo com sucesso',
+							showConfirmButton: false,
+							backdrop: false,
+							timer: 1000,
+						});
 						this.dialogRef.close();
 					},
 					error: (error: HttpErrorResponse) => {
@@ -55,6 +64,14 @@ export class ModalMantimentoComponent {
 			case 'edit':
 				this.service.update(this.form.value).subscribe({
 					next: () => {
+						Swal.fire({
+							position: 'top-end',
+							icon: 'success',
+							title: 'Editado com sucesso',
+							showConfirmButton: false,
+							backdrop: false,
+							timer: 1000,
+						});
 						this.dialogRef.close();
 					},
 					error: (error: HttpErrorResponse) => {

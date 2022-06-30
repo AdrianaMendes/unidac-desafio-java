@@ -22,6 +22,17 @@
 						{{ 'text.mandatory-field' | translate }}
 					</mat-error>
 				</mat-form-field>
+				<mat-form-field fxFlex appearance="fill" [ngClass]="isReadonly ? 'disable-click' : ''">
+					<mat-label>{{ 'text.groceries' | translate }}</mat-label>
+					<mat-select multiple formControlName="listaMantimentos" [compareWith]="compararMantimento">
+						<mat-option *ngFor="let mantimento of listaMantimentosComboBox" [value]="mantimento">
+							{{ mantimento.descricao }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						{{ 'text.mandatory-field' | translate }}
+					</mat-error>
+				</mat-form-field>
 			</div>
 		</form>
 	</ng-container>

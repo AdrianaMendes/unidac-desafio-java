@@ -13,7 +13,7 @@ import { ModalColaboradorComponent } from './modal-colaborador/modal-colaborador
 	templateUrl: './colaborador.page.html',
 })
 export class ColaboradorPage implements AfterViewInit {
-	readonly displayedColumns: string[] = ['id', 'nome', 'cpf', 'listaMantimentos', 'action'];
+	readonly displayedColumns: string[] = ['id', 'nome', 'cpf', 'listaMantimentosString', 'action'];
 
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatSort) sort!: MatSort;
@@ -23,6 +23,10 @@ export class ColaboradorPage implements AfterViewInit {
 
 	private refresh(): void {
 		this.service.findAll().subscribe((response) => {
+			for (let i = 0; i < response.length; ++i) {
+				response[i].listaMantimentosString = response[i].listaMantimentos.map((x) => x.descricao).join(',') as any;
+			}
+
 			this.dataSource = new MatTableDataSource(response);
 			this.dataSource.paginator = this.paginator;
 			this.dataSource.sort = this.sort;

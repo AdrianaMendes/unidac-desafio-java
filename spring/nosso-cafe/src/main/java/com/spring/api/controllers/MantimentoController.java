@@ -41,6 +41,11 @@ public class MantimentoController {
 		return new ResponseEntity<>(this.service.findAll(), HttpStatus.OK);
 	}
 	
+	@GetMapping(path = "findAllAvailable")
+	public ResponseEntity<List<MantimentoResponseDto>> findAllAvailable() {
+		return new ResponseEntity<>(this.service.findAllAvailable(), HttpStatus.OK);
+	}
+	
 	@PutMapping(path = "update")
 	public ResponseEntity<Void> update(@Valid @RequestBody final MantimentoRequestDto request) {
 		this.service.update(request);

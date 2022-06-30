@@ -20,6 +20,9 @@ public interface MantimentoRepository extends JpaRepository<MantimentoEntity, Lo
 
 	@Query(value = "SELECT * FROM mantimento", nativeQuery = true)
 	List<MantimentoEntity> findAllNativeQuery();
+	
+	@Query(value = "SELECT * FROM mantimento m WHERE m.colaborador_id IS NULL", nativeQuery = true)
+	List<MantimentoEntity> findAllAvailableNativeQuery();
 
 	@Query(value = "SELECT * FROM mantimento m WHERE m.id = :id", nativeQuery = true)
 	MantimentoEntity findByIdNativeQuery(final Long id);

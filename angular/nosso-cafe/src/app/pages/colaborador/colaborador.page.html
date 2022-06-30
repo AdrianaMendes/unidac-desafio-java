@@ -20,9 +20,9 @@
 			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.cpf' | translate }}</mat-header-cell>
 			<mat-cell *matCellDef="let row">{{ row['cpf'] | mask: '000.000.000-00' }}</mat-cell>
 		</ng-container>
-		<ng-container matColumnDef="listaMantimentos">
+		<ng-container matColumnDef="listaMantimentosString">
 			<mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'text.groceries' | translate }}</mat-header-cell>
-			<mat-cell *matCellDef="let row">{{ row['listaMantimentos'] }}</mat-cell>
+			<mat-cell *matCellDef="let row">{{ row['listaMantimentosString'] }}</mat-cell>
 		</ng-container>
 		<ng-container matColumnDef="action">
 			<mat-header-cell *matHeaderCellDef>{{ 'text.action' | translate }}</mat-header-cell>

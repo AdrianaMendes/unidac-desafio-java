@@ -6,6 +6,7 @@ export interface IColaborador extends IEntity {
 	nome: string;
 	cpf: string;
 	listaMantimentos: IMantimento[];
+	listaMantimentosString?: string;
 }
 
 export interface IColaboradorFormGroup extends FormGroup {

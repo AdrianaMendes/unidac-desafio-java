@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TModal } from '@custom-types/modal.type';
 import { IMantimento } from '@interfaces/mantimento.interface';
 import { MantimentoService } from '@services/mantimento.service';
+import Swal from 'sweetalert2';
 import { ModalMantimentoComponent } from './modal-mantimento/modal-mantimento.component';
 
 @Component({
@@ -56,6 +57,14 @@ export class MantimentoPage implements AfterViewInit {
 		this.service.delete(id).subscribe({
 			next: () => {
 				this.dataSource.data = this.dataSource.data.filter((x) => x.id !== id);
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'Excluído com sucesso',
+					showConfirmButton: false,
+					backdrop: false,
+					timer: 1000,
+				});
 			},
 			error: (error: HttpErrorResponse) => {
 				console.error(error);

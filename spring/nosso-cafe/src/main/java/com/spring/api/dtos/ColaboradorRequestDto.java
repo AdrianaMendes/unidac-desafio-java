@@ -1,5 +1,7 @@
 package com.spring.api.dtos;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -21,6 +23,8 @@ public class ColaboradorRequestDto {
 	@NotBlank(message = "Campo CPF obrigatório.")
 	@CPF(message = "CPF inválido.")
 	private String cpf;
+	
+	private List<MantimentoRequestDto> listaMantimentos;
 
 	public String getCpfNumber() {
 		return cpf.replaceAll("\\D", "");
