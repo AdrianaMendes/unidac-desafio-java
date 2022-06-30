@@ -15,6 +15,10 @@ public class MantimentoService {
 	@Autowired
 	private MantimentoRepository repository;
 
+	public void deleteById(final Long id) {
+		repository.deleteByIdNativeQuery(id);
+	}
+
 	public List<MantimentoResponseDto> findAll() {
 		return MantimentoResponseDto.toListDto(repository.findAllNativeQuery());
 	}

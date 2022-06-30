@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import br.com.caelum.stella.bean.validation.CPF;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,5 +43,6 @@ public final class ColaboradorEntity implements Serializable {
 	private String cpf;
 
 	@OneToMany(mappedBy = "colaborador")
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private List<MantimentoEntity> listaMantimentos;
 }

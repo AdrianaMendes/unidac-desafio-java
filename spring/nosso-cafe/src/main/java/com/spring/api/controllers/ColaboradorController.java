@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,6 +34,12 @@ public class ColaboradorController {
 	public ResponseEntity<Void> addMantimento(@RequestParam final Long colaboradorId, @RequestParam final Long mantimentoId) {
 		this.service.addMantimento(colaboradorId, mantimentoId);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@DeleteMapping(path = "delete")
+	public ResponseEntity<Void> delete(@RequestParam final Long id) {
+		this.service.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@GetMapping(path = "findAll")
