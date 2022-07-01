@@ -15,31 +15,31 @@ import com.spring.api.entities.ColaboradorEntity;
 public interface ColaboradorRepository extends JpaRepository<ColaboradorEntity, Long> {
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE mantimento m SET m.colaborador_id = :colaboradorId WHERE m.id = :mantimentoId", nativeQuery = true)
+	@Query(value = "UPDATE mantimento SET colaborador_id = :colaboradorId WHERE id = :mantimentoId", nativeQuery = true)
 	void addMantimentoNativeQuery(final Long colaboradorId, final Long mantimentoId);
 
 	@Modifying
 	@Transactional
-	@Query(value = "DELETE FROM colaborador c WHERE c.id = :id", nativeQuery = true)
+	@Query(value = "DELETE FROM colaborador WHERE id = :id", nativeQuery = true)
 	void deleteByIdNativeQuery(final Long id);
 
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE mantimento m SET m.colaborador_id = NULL WHERE m.colaborador_id = :id", nativeQuery = true)
+	@Query(value = "UPDATE mantimento SET colaborador_id = NULL WHERE colaborador_id = :id", nativeQuery = true)
 	void deleteMantimentoFromColaborador(final Long id);
 
 	@Query(value = "SELECT * FROM colaborador", nativeQuery = true)
 	List<ColaboradorEntity> findAllNativeQuery();
 
-	@Query(value = "SELECT * FROM colaborador c WHERE c.cpf = :cpf", nativeQuery = true)
+	@Query(value = "SELECT * FROM colaborador WHERE cpf = :cpf", nativeQuery = true)
 	ColaboradorEntity findByCpfNativeQuery(final String cpf);
 
-	@Query(value = "SELECT * FROM colaborador c WHERE c.id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM colaborador WHERE id = :id", nativeQuery = true)
 	ColaboradorEntity findByIdNativeQuery(final Long id);
 	
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE colaborador c SET c.nome = :nome WHERE c.id = :id", nativeQuery = true)
+	@Query(value = "UPDATE colaborador SET nome = :nome WHERE id = :id", nativeQuery = true)
 	void updateNativeQuery(final Long id, final String nome);
 	
 	@Modifying

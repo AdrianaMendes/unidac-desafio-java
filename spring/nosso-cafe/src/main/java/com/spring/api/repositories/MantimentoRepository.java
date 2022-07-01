@@ -15,21 +15,21 @@ import com.spring.api.entities.MantimentoEntity;
 public interface MantimentoRepository extends JpaRepository<MantimentoEntity, Long> {
 	@Modifying
 	@Transactional
-	@Query(value = "DELETE FROM mantimento m WHERE m.id = :id", nativeQuery = true)
+	@Query(value = "DELETE FROM mantimento WHERE id = :id", nativeQuery = true)
 	void deleteByIdNativeQuery(final Long id);
 
 	@Query(value = "SELECT * FROM mantimento", nativeQuery = true)
 	List<MantimentoEntity> findAllNativeQuery();
 	
-	@Query(value = "SELECT * FROM mantimento m WHERE m.colaborador_id IS NULL", nativeQuery = true)
+	@Query(value = "SELECT * FROM mantimento WHERE colaborador_id IS NULL", nativeQuery = true)
 	List<MantimentoEntity> findAllAvailableNativeQuery();
 
-	@Query(value = "SELECT * FROM mantimento m WHERE m.id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM mantimento WHERE id = :id", nativeQuery = true)
 	MantimentoEntity findByIdNativeQuery(final Long id);
 
 	@Modifying
 	@Transactional
-	@Query(value = "UPDATE mantimento m SET m.descricao = :descricao WHERE m.id = :id", nativeQuery = true)
+	@Query(value = "UPDATE mantimento SET descricao = :descricao WHERE id = :id", nativeQuery = true)
 	void updateNativeQuery(final Long id, final String descricao);
 	
 	@Modifying
