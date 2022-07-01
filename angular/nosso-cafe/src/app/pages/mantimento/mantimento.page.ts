@@ -58,12 +58,12 @@ export class MantimentoPage implements AfterViewInit {
 			next: () => {
 				this.dataSource.data = this.dataSource.data.filter((x) => x.id !== id);
 				Swal.fire({
-					position: 'top-end',
+					position: 'center',
 					icon: 'success',
 					title: 'Excluído com sucesso',
 					showConfirmButton: false,
 					backdrop: false,
-					timer: 1000,
+					timer: 1500,
 				});
 			},
 			error: (error: HttpErrorResponse) => {

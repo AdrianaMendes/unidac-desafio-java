@@ -61,17 +61,21 @@ export class ModalColaboradorComponent {
 				this.service.save(this.form.value).subscribe({
 					next: () => {
 						Swal.fire({
-							position: 'top-end',
+							position: 'center',
 							icon: 'success',
 							title: 'Salvo com sucesso',
 							showConfirmButton: false,
 							backdrop: false,
-							timer: 1000,
+							timer: 1500,
 						});
 						this.dialogRef.close();
 					},
 					error: (error: HttpErrorResponse) => {
-						Swal.fire(error.error.message, '', 'error');
+						if (error?.error?.cpf) {
+							Swal.fire(error.error?.cpf, '', 'error');
+						} else {
+							Swal.fire(error.error?.message, '', 'error');
+						}
 						console.error(error);
 						this.dialogRef.close();
 					},
@@ -81,12 +85,12 @@ export class ModalColaboradorComponent {
 				this.service.update(this.form.value).subscribe({
 					next: () => {
 						Swal.fire({
-							position: 'top-end',
+							position: 'center',
 							icon: 'success',
 							title: 'Editado com sucesso',
 							showConfirmButton: false,
 							backdrop: false,
-							timer: 1000,
+							timer: 1500,
 						});
 						this.dialogRef.close();
 					},
