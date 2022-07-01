@@ -22,7 +22,7 @@ import { ModalComponent } from './components/modal/modal.component';
 @NgModule({
 	declarations: [AppComponent, HomePage, SettingPage, ColaboradorPage, ModalComponent, ModalColaboradorComponent, MantimentoPage, ModalMantimentoComponent],
 	imports: [
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
+		BrowserModule,
 		AppRoutingModule,
 		TranslateModule.forRoot({
 			loader: {
