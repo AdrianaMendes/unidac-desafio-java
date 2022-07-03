@@ -10,6 +10,7 @@
 			<div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="1%">
 				<mat-form-field fxFlex appearance="fill">
 					<mat-label>{{ 'text.name' | translate }}</mat-label>
+					<mat-icon matPrefix>account_circle</mat-icon>
 					<input matInput type="text" formControlName="nome" name="nome" required [readonly]="isReadonly" />
 					<mat-error>
 						{{ 'text.mandatory-field' | translate }}
@@ -17,6 +18,7 @@
 				</mat-form-field>
 				<mat-form-field fxFlex appearance="fill">
 					<mat-label>{{ 'text.cpf' | translate }}</mat-label>
+					<mat-icon matPrefix>badge</mat-icon>
 					<input matInput type="text" formControlName="cpf" name="cpf" required [readonly]="isReadonly" [mask]="'000.000.000-00'" />
 					<mat-error>
 						{{ 'text.mandatory-field' | translate }}
@@ -24,6 +26,7 @@
 				</mat-form-field>
 				<mat-form-field fxFlex appearance="fill" [ngClass]="isReadonly ? 'disable-click' : ''">
 					<mat-label>{{ 'text.groceries' | translate }}</mat-label>
+					<mat-icon matPrefix>coffee</mat-icon>
 					<mat-select multiple formControlName="listaMantimentos" [compareWith]="compararMantimento">
 						<mat-option *ngFor="let mantimento of listaMantimentosComboBox" [value]="mantimento">
 							{{ mantimento.descricao }}
