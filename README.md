@@ -2,7 +2,9 @@
 
 # Nosso Café
 
-O presente projeto é uma aplicação WEB com backend em java spring e angular no frontend. No desenvolvimento foi empregado Lombok, Swagger e servidor H2. A infraestrutura empregada para hospedar o servidor foi o Heroku utilizando o banco de dados Postgresql. O contexto da aplicação é sobre os colaboradores de uma empresa que tem que levar um ou mais itens para o café da manhã que não seja repetido. A aplicação WEB tem suporte de regionalização e responsividade.
+O presente projeto é uma aplicação web composta por backend em Java com Spring Boot e frontend desenvolvido em Angular. Durante o desenvolvimento, foram utilizadas as bibliotecas Lombok e Swagger, além do banco de dados em memória H2 para testes. A aplicação está hospedada na plataforma Heroku, utilizando o banco de dados PostgreSQL.
+
+O contexto da aplicação envolve o gerenciamento de colaboradores de uma empresa que devem levar um ou mais itens para o café da manhã, evitando repetições.
 
 ![Nosso Café](images/print-frontend.png)
 
@@ -24,30 +26,47 @@ O projeto está instanciado no Heroku e está disponível nos links abaixo:
 
 O projeto foi desenvolvido com a documentação Swagger, que está disponível no aquivo ```swagger.json```.
 
-## Teste localhost
+## Deploy
+
+1. Clone o repositório:
+   ```bash
+   git clone git clone https://github.com/AdrianaMendes/unidac-desafio-java.git
+   ```
+
+2. Navegue até o diretório do projeto e execute:
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+3. Acesse o sistema em:
+   ```
+   http://localhost:8080/swagger-ui/index.html
 
 Para testar localmente o Swagger e a aplicação com o H2 apenas alterar o arquivo properties do backend conforme mostrado abaixo.
 
 ```
-    # Database configuration
-    spring.datasource.url=jdbc:h2:mem:spring
-    spring.datasource.username=admin
-    spring.datasource.password=
+# Database configuration
+spring.datasource.url=jdbc:h2:mem:spring
+spring.datasource.username=admin
+spring.datasource.password=
 
-    spring.h2.console.enabled=true
-    spring.h2.console.path=/h2-console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
 
-    #spring.jpa.generate-ddl=true
-    #spring.jpa.hibernate.ddl-auto=create
+#spring.jpa.generate-ddl=true
+#spring.jpa.hibernate.ddl-auto=create
 ```
-
-Para acessar a documentação swagger acesse esta URL: http://localhost:8080/swagger-ui/index.html
 
 ![Swagger](images/swagger-home.png)
 
-Para acessar o banco de dados H2: http://localhost:8080/h2-console/
+## Banco de dados
 
-![H2](images/h2.png)
+- O projeto utiliza o **H2 Database** em memória.
+  ```
+  http://localhost:8080/h2-console
+  ```
+  - JDBC URL: `jdbc:h2:mem:spring`
+  - Usuário: `admin`
 
 ## Licença
 
@@ -56,8 +75,8 @@ Para mais informações acesse o arquivo :scroll: `LICENSE`.
 
 ## Contato
 
-:email: E-Mail: ​[adrianamirianmc@gmail.com](adrianamirianmc@gmail.com)
+**Adriana Cardoso**  
+Desenvolvedora Java | Spring Boot | Angular  
 
-:clipboard: Linkedin: ​[https://www.linkedin.com/in/adriana-mirian-mendes-cardoso](https://www.linkedin.com/in/adriana-mirian-mendes-cardoso)
-
-:package: GitHub:  [https://github.com/AdrianaMendes](https://github.com/AdrianaMendes)
+- [LinkedIn](https://www.linkedin.com/in/amendescardoso/)  
+- 📧 adrianamirianmc@gmail.com
