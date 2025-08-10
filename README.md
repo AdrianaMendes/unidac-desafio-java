@@ -70,13 +70,10 @@ spring.h2.console.path=/h2-console
 
 ## Licença
 
-Este projeto está sob licença Apache 2.0 © 2022 Adriana Mirian Mendes Cardoso.
-Para mais informações acesse o arquivo :scroll: `LICENSE`.
+Este projeto está sob licença Apache 2.0 © 2022 Adriana Cardoso. Para mais informações acesse o arquivo :scroll: `LICENSE`.
 
 ## Contato
 
 **Adriana Cardoso**  
 Desenvolvedora Java | Spring Boot | Angular  
-
-- [LinkedIn](https://www.linkedin.com/in/amendescardoso/)  
 - 📧 adrianamirianmc@gmail.com
